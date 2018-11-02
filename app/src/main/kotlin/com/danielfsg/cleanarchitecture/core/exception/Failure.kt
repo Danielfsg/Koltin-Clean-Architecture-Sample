@@ -21,7 +21,7 @@ package com.danielfsg.cleanarchitecture.core.exception
  */
 sealed class Failure {
     class NetworkConnection : Failure()
-    class ServerError : Failure()
+    data class ServerError(val message: String) : Failure()
 
     /** * Extend this class for feature specific failures.*/
     abstract class FeatureFailure : Failure()

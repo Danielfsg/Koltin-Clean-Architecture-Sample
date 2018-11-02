@@ -64,9 +64,9 @@ class MovieDetailsFragment : BaseFragment() {
     private fun renderMovieDetails(movie: MovieDetailsView?) {
         movie?.let {
             with(movie) {
-                activity?.let {
-                    moviePoster.loadUrlAndPostponeEnterTransition(poster, it)
-                    it.toolbar.title = title
+                activity?.let { activity ->
+                    moviePoster.loadUrlAndPostponeEnterTransition(poster, activity)
+                    activity.toolbar.title = title
                 }
                 movieSummary.text = summary
                 movieCast.text = cast
@@ -86,7 +86,7 @@ class MovieDetailsFragment : BaseFragment() {
                 close()
             }
             is Failure.ServerError -> {
-                notify(R.string.failure_network_connection)
+                notify(R.string.failure_server_error)
                 close()
             }
             is MovieFailure.NonExistentMovie -> {

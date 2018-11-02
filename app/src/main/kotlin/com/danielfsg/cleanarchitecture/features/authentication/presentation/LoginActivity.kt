@@ -1,4 +1,4 @@
-package com.danielfsg.cleanarchitecture.features.login
+package com.danielfsg.cleanarchitecture.features.authentication.presentation
 
 import android.content.Context
 import android.content.Intent

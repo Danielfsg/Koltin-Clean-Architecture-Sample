@@ -9,8 +9,9 @@ import android.support.v4.app.FragmentActivity
 import android.view.View
 import android.widget.ImageView
 import com.danielfsg.cleanarchitecture.core.extension.empty
-import com.danielfsg.cleanarchitecture.features.login.Authenticator
-import com.danielfsg.cleanarchitecture.features.login.LoginActivity
+import com.danielfsg.cleanarchitecture.features.authentication.domain.Authenticator
+import com.danielfsg.cleanarchitecture.features.authentication.presentation.LoginActivity
+import com.danielfsg.cleanarchitecture.features.authentication.presentation.RegisterActivity
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MovieDetailsActivity
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MovieView
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MoviesActivity
@@ -19,14 +20,16 @@ class Navigator(private val authenticator: Authenticator) {
 
     private fun showLogin(context: Context) = context.startActivity(LoginActivity.callingIntent(context))
 
+    fun showRegister(context: Context) = context.startActivity(RegisterActivity.callingIntent(context))
+
     fun showMain(context: Context) {
-        when (authenticator.userLoggedIn()) {
+        when (authenticator.isUserLoggedIn()) {
             true -> showMovies(context)
             false -> showLogin(context)
         }
     }
 
-    private fun showMovies(context: Context) = context.startActivity(MoviesActivity.callingIntent(context))
+    fun showMovies(context: Context) = context.startActivity(MoviesActivity.callingIntent(context))
 
     fun showMovieDetails(activity: FragmentActivity, movie: MovieView, navigationExtras: Extras) {
         val intent = MovieDetailsActivity.callingIntent(activity, movie)

@@ -3,6 +3,8 @@
     package="com.danielfsg.cleanarchitecture">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".AndroidApplication"
         android:allowBackup="true"
@@ -20,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.login.LoginActivity"
+            android:name=".features.authentication.presentation.LoginActivity"
             android:label="@string/login_screen_title" />
         <activity
             android:name=".features.movies.presentation.MoviesActivity"
@@ -28,6 +30,7 @@
         <activity
             android:name=".features.movies.presentation.MovieDetailsActivity"
             android:label="@string/movie_details_screen_title" />
+        <activity android:name=".features.authentication.presentation.RegisterActivity" />
     </application>
 
 </manifest>
