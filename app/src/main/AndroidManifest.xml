@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".core.navigation.RouteActivity">
+        <activity
+            android:name=".core.navigation.RouteActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
@@ -25,12 +27,14 @@
             android:name=".features.authentication.presentation.LoginActivity"
             android:label="@string/login_screen_title" />
         <activity
+            android:name=".features.authentication.presentation.RegisterActivity"
+            android:label="@string/register" />
+        <activity
             android:name=".features.movies.presentation.MoviesActivity"
             android:label="@string/movies_screen_title" />
         <activity
             android:name=".features.movies.presentation.MovieDetailsActivity"
             android:label="@string/movie_details_screen_title" />
-        <activity android:name=".features.authentication.presentation.RegisterActivity" />
     </application>
 
 </manifest>

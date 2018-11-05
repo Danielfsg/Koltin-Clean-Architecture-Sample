@@ -23,7 +23,7 @@ class LoginFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         with(loginViewModel) {
-            observe(loggedUser, ::handleLoggedUser)
+            observe(successLiveData, ::handleLoggedUser)
             failure(failure, ::handleFailure)
         }
     }

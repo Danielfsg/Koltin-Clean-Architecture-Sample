@@ -8,6 +8,7 @@ class UserService(retrofit: Retrofit) : UserApi {
     private val userApi by lazy { retrofit.create(UserApi::class.java) }
 
     override fun login(user: User) = userApi.login(user)
+
     override fun register(user: User) = userApi.register(user)
 
 }

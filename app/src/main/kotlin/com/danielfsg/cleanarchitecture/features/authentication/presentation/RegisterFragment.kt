@@ -18,22 +18,22 @@ class RegisterFragment : BaseFragment() {
     private val navigator: Navigator by inject()
     private val registerViewModel: RegisterViewModel by inject()
 
-    override fun layoutId() = R.layout.fragment_login
+    override fun layoutId() = R.layout.fragment_register
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         with(registerViewModel) {
-            observe(loggedUser, ::handleLoggedUser)
+            observe(successLiveData, ::handleSuccess)
             failure(failure, ::handleFailure)
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initLoginClick()
+        btn_register.setOnClickListener { registerAction() }
     }
 
-    private fun initLoginClick() {
+    private fun registerAction() {
         showProgress()
         enabledFields(false)
         registerViewModel.registerUser(
@@ -50,7 +50,7 @@ class RegisterFragment : BaseFragment() {
         et_password.isEnabled = enable
     }
 
-    private fun handleLoggedUser(isLoggedIn: Boolean?) {
+    private fun handleSuccess(success: Boolean?) {
         hideProgress()
         enabledFields(true)
         navigator.showMain(activity!!)

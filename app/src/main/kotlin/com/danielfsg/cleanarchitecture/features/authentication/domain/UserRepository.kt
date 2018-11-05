@@ -27,7 +27,7 @@ interface UserRepository {
         override fun register(user: User): Either<Failure, User> {
             return when (networkHandler.isConnected) {
                 true -> {
-                    networkHandler.request(service.login(user), { it.toUser() }, UserEntity.empty())
+                    networkHandler.request(service.register(user), { it.toUser() }, UserEntity.empty())
                 }
                 false, null -> Either.Left(Failure.NetworkConnection())
             }

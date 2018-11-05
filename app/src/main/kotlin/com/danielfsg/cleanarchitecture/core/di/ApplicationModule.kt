@@ -5,11 +5,9 @@ import com.danielfsg.cleanarchitecture.core.navigation.Navigator
 import com.danielfsg.cleanarchitecture.core.platform.NetworkHandler
 import com.danielfsg.cleanarchitecture.core.platform.SharedPrefsHandler
 import com.danielfsg.cleanarchitecture.features.authentication.data.UserService
-import com.danielfsg.cleanarchitecture.features.authentication.domain.Authenticator
-import com.danielfsg.cleanarchitecture.features.authentication.domain.LoginUser
-import com.danielfsg.cleanarchitecture.features.authentication.domain.UserPrefs
-import com.danielfsg.cleanarchitecture.features.authentication.domain.UserRepository
+import com.danielfsg.cleanarchitecture.features.authentication.domain.*
 import com.danielfsg.cleanarchitecture.features.authentication.presentation.LoginViewModel
+import com.danielfsg.cleanarchitecture.features.authentication.presentation.RegisterViewModel
 import com.danielfsg.cleanarchitecture.features.movies.data.MoviesService
 import com.danielfsg.cleanarchitecture.features.movies.domain.GetMovieDetails
 import com.danielfsg.cleanarchitecture.features.movies.domain.GetMovies
@@ -28,7 +26,7 @@ import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "http://da5c83e7.ngrok.io/"
+const val BASE_URL = "https://fa042697.eu.ngrok.io/"
 
 val applicationModule = module {
 
@@ -66,9 +64,13 @@ val applicationModule = module {
 val loginModule = module {
     single { UserRepository.Network(get(), get()) as UserRepository }
 
-    single { LoginUser(get()) }
     single { UserPrefs(get()) }
+
+    single { LoginUser(get()) }
     viewModel { LoginViewModel(get(), get()) }
+
+    single { RegisterUser(get()) }
+    viewModel { RegisterViewModel(get(), get()) }
 
 }
 
@@ -83,5 +85,4 @@ val moviesModule = module {
 
     single { GetMovieDetails(get()) }
     viewModel { MovieDetailsViewModel(get(), get()) }
-
 }
