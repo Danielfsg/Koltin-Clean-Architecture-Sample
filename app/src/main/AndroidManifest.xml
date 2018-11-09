@@ -35,6 +35,10 @@
         <activity
             android:name=".features.movies.presentation.MovieDetailsActivity"
             android:label="@string/movie_details_screen_title" />
+        <activity
+            android:name=".features.notes.presentation.list.NotesActivity"
+            android:label="@string/notes" />
+        <activity android:name=".features.notes.presentation.note.AddEditNoteActivity" />
     </application>
 
 </manifest>

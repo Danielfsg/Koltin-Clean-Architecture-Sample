@@ -84,3 +84,10 @@ hs_err_pid*
 **/*.iml
 *.class
 /app/release/output.json
+/app/.classpath
+.project
+.settings/
+app/.classpath
+app/.project
+app/.settings/
+app/libs/

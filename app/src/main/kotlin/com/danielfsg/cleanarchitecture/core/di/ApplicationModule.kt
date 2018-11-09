@@ -17,7 +17,10 @@ import com.danielfsg.cleanarchitecture.features.movies.presentation.MovieDetails
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MovieDetailsViewModel
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MoviesAdapter
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MoviesViewModel
-import com.google.gson.Gson
+import com.danielfsg.cleanarchitecture.features.notes.data.NoteService
+import com.danielfsg.cleanarchitecture.features.notes.domain.*
+import com.danielfsg.cleanarchitecture.features.notes.presentation.list.NotesAdapter
+import com.danielfsg.cleanarchitecture.features.notes.presentation.list.NotesViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,7 +29,7 @@ import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "https://fa042697.eu.ngrok.io/"
+const val BASE_URL = "https://c713ec6f.eu.ngrok.io"
 
 val applicationModule = module {
 
@@ -57,9 +60,9 @@ val applicationModule = module {
 
     factory { MoviesService(get()) }
     factory { UserService(get()) }
+    factory { NoteService(get()) }
 
 }
-
 
 val loginModule = module {
     single { UserRepository.Network(get(), get()) as UserRepository }
@@ -71,6 +74,21 @@ val loginModule = module {
 
     single { RegisterUser(get()) }
     viewModel { RegisterViewModel(get(), get()) }
+}
+
+val notesModule = module {
+    single { NoteRepository.Network(get(), get(),get()) as NoteRepository }
+    single { NotePrefs(get()) }
+
+    single { GetNotes(get()) }
+    single { GetNoteById(get()) }
+    single { AddNote(get()) }
+    single { UpdateNote(get()) }
+    single { DeleteNote(get()) }
+
+    factory { NotesAdapter() }
+
+    viewModel { NotesViewModel(get()) }
 
 }
 

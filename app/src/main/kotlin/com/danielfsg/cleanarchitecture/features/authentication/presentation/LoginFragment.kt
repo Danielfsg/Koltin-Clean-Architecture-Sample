@@ -53,7 +53,7 @@ class LoginFragment : BaseFragment() {
     private fun handleLoggedUser(isLoggedIn: Boolean?) {
         hideProgress()
         enabledFields(true)
-        navigator.showMovies(activity!!)
+        navigator.showMain(activity!!)
     }
 
     private fun handleFailure(failure: Failure?) {

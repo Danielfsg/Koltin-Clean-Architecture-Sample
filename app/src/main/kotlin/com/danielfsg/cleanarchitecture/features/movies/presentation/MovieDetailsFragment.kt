@@ -8,7 +8,7 @@ import com.danielfsg.cleanarchitecture.core.extension.*
 import com.danielfsg.cleanarchitecture.core.platform.BaseFragment
 import com.danielfsg.cleanarchitecture.features.movies.domain.MovieFailure
 import kotlinx.android.synthetic.main.fragment_movie_details.*
-import kotlinx.android.synthetic.main.toolbar.toolbar
+import kotlinx.android.synthetic.main.toolbar.*
 import org.koin.android.ext.android.inject
 
 class MovieDetailsFragment : BaseFragment() {

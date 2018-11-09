@@ -15,21 +15,24 @@ import com.danielfsg.cleanarchitecture.features.authentication.presentation.Regi
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MovieDetailsActivity
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MovieView
 import com.danielfsg.cleanarchitecture.features.movies.presentation.MoviesActivity
+import com.danielfsg.cleanarchitecture.features.notes.presentation.list.NotesActivity
 
 class Navigator(private val authenticator: Authenticator) {
+
+    fun showMain(context: Context) {
+        when (authenticator.isUserLoggedIn()) {
+            true -> showNotes(context)
+            false -> showLogin(context)
+        }
+    }
 
     private fun showLogin(context: Context) = context.startActivity(LoginActivity.callingIntent(context))
 
     fun showRegister(context: Context) = context.startActivity(RegisterActivity.callingIntent(context))
 
-    fun showMain(context: Context) {
-        when (authenticator.isUserLoggedIn()) {
-            true -> showMovies(context)
-            false -> showLogin(context)
-        }
-    }
-
     fun showMovies(context: Context) = context.startActivity(MoviesActivity.callingIntent(context))
+
+    private fun showNotes(context: Context) = context.startActivity(NotesActivity.callingIntent(context))
 
     fun showMovieDetails(activity: FragmentActivity, movie: MovieView, navigationExtras: Extras) {
         val intent = MovieDetailsActivity.callingIntent(activity, movie)

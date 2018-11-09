@@ -1,10 +1,11 @@
 package com.danielfsg.cleanarchitecture.features.authentication.domain
 
-class Authenticator(private val userPrefs: UserPrefs) {
+class Authenticator(private val prefsHandler: UserPrefs) {
 
     fun saveLoggedUser(user: User) {
-        userPrefs.loggedUser = user
+        prefsHandler.loggedUser = user
+        prefsHandler.jwToken = user.jwt
     }
 
-    fun isUserLoggedIn() = !userPrefs.loggedUser?.jwt.isNullOrEmpty()
+    fun isUserLoggedIn() = !prefsHandler.loggedUser?.jwt.isNullOrEmpty()
 }

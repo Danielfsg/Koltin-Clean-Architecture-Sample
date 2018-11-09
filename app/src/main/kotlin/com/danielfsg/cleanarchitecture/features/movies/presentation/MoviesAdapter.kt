@@ -7,7 +7,7 @@ import com.danielfsg.cleanarchitecture.R
 import com.danielfsg.cleanarchitecture.core.extension.inflate
 import com.danielfsg.cleanarchitecture.core.extension.loadFromUrl
 import com.danielfsg.cleanarchitecture.core.navigation.Navigator
-import kotlinx.android.synthetic.main.item_movie.view.moviePoster
+import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlin.properties.Delegates
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {

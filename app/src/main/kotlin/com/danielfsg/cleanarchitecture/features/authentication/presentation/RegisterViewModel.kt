@@ -12,8 +12,9 @@ class RegisterViewModel(private val registerUser: RegisterUser, private val auth
 
     var successLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun registerUser(userView: UserView) =
+    fun registerUser(userView: UserView) {
         registerUser.execute({ it.either(::handleFailure, ::handleRegisterUser) }, Params(userView.toUser()))
+    }
 
     private fun handleRegisterUser(user: User) {
         authenticator.saveLoggedUser(user)
